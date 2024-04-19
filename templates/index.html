@@ -73,6 +73,7 @@
                 <tr>
                     <th>Process Name</th>
                     <th>Username</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -80,6 +81,12 @@
                 <tr>
                     <td>{{ process.name }}</td>
                     <td>{{ process.username }}</td>
+                    <td>
+                        <form action="{{ url_for('kill_process') }}" method="post">
+                            <input type="hidden" name="pid" value="{{ process.pid }}">
+                            <button type="submit">Kill</button>
+                        </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
